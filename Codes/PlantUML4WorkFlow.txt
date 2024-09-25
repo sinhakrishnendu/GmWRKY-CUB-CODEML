@@ -1,0 +1,77 @@
+@startuml
+start
+
+:**Sequence Retrieval and Quality Assessment**;
+note right
+- CDS from PlantTFDB
+- 7 quality checks
+end note
+
+:**179 CDS retrieved**;
+
+split
+    :**CUB Indices Analysis**;
+    note left
+    - GC12, GC3s, 
+     CAI, NC, etc.
+    end note
+        
+split again
+    :**Promoter Analysis for TFBS**;
+       
+    
+split again
+    :**MSA**;
+    note right
+    - using MUSCLE
+    end note
+       
+    :**Phylogenetic Reconstruction**;
+    note right    
+    - using IQ-TREE2
+    - 1000 bootstraps
+    - visualizing with TreeViewer
+    end note
+
+    :**Clade Identification**;
+    note right
+    - bootstraps > 90
+    end note
+        
+    :**Clade-wise MSA**;
+    note right
+    - using PRANK
+    end note
+
+    :**Clade-wise Phylogenetic Reconstruction**;
+    note right
+    - using IQ-TREE2
+    - 10000 bootstraps
+    end note
+    :**PAML / CODEML**;
+
+    split
+    :**Selection Signature Analysis**;
+    note left
+    - M0, M1, M2a, M2b, M3, M7, M8 
+    - free-ratio branch model, 
+      two-ration branch model 
+    - branch-site model A/A1
+      end note
+
+    split again
+    :**Ancestral Sequence Reconstruction**;
+    end split
+end split
+
+: **Statistical analysis in R**;
+
+
+: **Final Output**;
+  note right
+  - Insights into CUB, TFBS regulation, 
+    selection signatures, and adaptation 
+    in GmWRKY genes
+  end note
+stop
+@enduml
